@@ -1,9 +1,8 @@
-var lowerCase = "abcdefghijklmnopqrstuvwxyz";
-var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var lowerCase =  ["a", "b", "c", "d", "e","f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+var upperCase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 var int = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
 var punctuation = [ "~", "`", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "-", "+", "=", "{", "[", "}", "]", "|", "<", ">", "?", "/"];
-var pool = "";
-
+var bank = []
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
@@ -24,7 +23,7 @@ function generatePassword(message){
   var defaultMsg;
 
     if (message){
-        defaultMsg = message
+        defaultMsg = message;
     } else {
         defaultMsg = "How long do you want your password to be? Password must be a minimum of 8 characters, and no more than 128 characters.";
     } 
@@ -39,20 +38,56 @@ function generatePassword(message){
     }
 
     var letters = confirm("Press OK to use lowercase letters in your password.");
-    console.log(letters)
+    console.log(letters);
     if (letters === true){
-      console.log(pool.concat(pool, lowerCase));
+      Array.prototype.push.apply(bank, lowerCase);
+      console.log(bank);
     } else {
-      console.log(pool)
+      console.log(bank);
     }
 
     var caps = confirm("Press OK to use uppercase letters in your password.");
-    console.log(caps)
-    if (letters === true){
-      console.log(pool.concat(pool, upperCase));
+    console.log(caps);
+    if (caps === true){
+      Array.prototype.push.apply(bank, upperCase);
+      console.log(bank);
     } else {
-      console.log(pool)
+      console.log(bank);
     }
+
+    var numb = confirm("Press OK to use numbers in your password.");
+    console.log(numb);
+    if (numb === true){
+      Array.prototype.push.apply(bank, int);
+      console.log(bank);
+    } else {
+      console.log(bank);
+    }
+
+    var specail = confirm("Press OK to use specail characters in your password.");
+    console.log(specail);
+    if (specail === true){
+      Array.prototype.push.apply(bank, punctuation);
+      console.log(bank);
+    } else {
+      console.log(bank);
+    }
+
+    if (letters === true ||
+      caps === true ||
+      numb === true ||
+      specail === true){
+        return error;
+    } else {
+      var error = alert("Please select atleast one character type to create your password.")
+      generatePassword();
+    }
+
+    // var i;
+    // for (i = 0; i < choice; i++) {
+    //   password += bank[i] 
+    // }
+    // console.log(password)
 }
 
 
