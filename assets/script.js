@@ -24,13 +24,13 @@ function generatePassword() {
   var passwordLength = parseInt(prompt("How long do you want your password to be? Password must be a minimum of 8 characters, and no more than 128 characters."));
 
   if (!passwordLength) {
-    alert("You chose an invalid option. Please try again.");
+    alert("You chose an invalid option. Please try again. Please use a number between 8 and 128");
     location.reload();
     return;
   }
 
   if (passwordLength < 8 || passwordLength > 128) {
-    alert("You chose an invalid option. Please try again.");
+    alert("You chose an invalid option. Please try again. Please use a number between 8 and 128");
     location.reload();
     return;
   }
