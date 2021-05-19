@@ -5,7 +5,7 @@ var punctuation = ["~", "`", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "
 
 var generateBtn = document.querySelector("#generate");
 
-// Write password to the #password input
+// Writes password to the #password input
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
@@ -14,11 +14,13 @@ function writePassword() {
 
 }
 
-
+// Main function to prompt use in creating their own password.
 function generatePassword() {
 
+  // This is the variable that will hold all the arrays 
   var bank = []
 
+  // Asking user how long they want the password to be With error messages for nonIntegers and Integers either too large or small
   var passwordLength = parseInt(prompt("How long do you want your password to be? Password must be a minimum of 8 characters, and no more than 128 characters."));
 
   if (!passwordLength) {
@@ -32,6 +34,7 @@ function generatePassword() {
     generatePassword();
   }
 
+  // Confirm statements to add or exclude different character types to password
   var useLowerCase = confirm("Press OK to use lowercase letters in your password.");
   if (useLowerCase) {
     bank.push(lowerCase);
@@ -52,6 +55,7 @@ function generatePassword() {
     bank.push(punctuation);
   }
 
+  // As long as one character type is choosen and passwordLength was true, this will randomly select arrays, and then randomly select from those arrays.
   if (useLowerCase || useUpperCase || useNumbers || usePunctuation) {
 
     var passwordString = '';
@@ -69,9 +73,10 @@ function generatePassword() {
       passwordString += bank[bankIndex][charIndex]
     }
 
+    // After everything is done, passwordString is returned and assigned to var password to be displayed
     return passwordString;
 
-
+    // If user didn't choose a character type they resart the function with an alert why they are being reset
   } else {
     alert("Please select atleast one character type to create your password.");
     generatePassword();
@@ -80,5 +85,5 @@ function generatePassword() {
 
 }
 
-// Add event listener to generate button
+// When the button is clicked writePassword starts, which starts the generatePassword function.
 generateBtn.addEventListener("click", writePassword);
