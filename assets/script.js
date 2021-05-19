@@ -24,14 +24,15 @@ function generatePassword() {
   var passwordLength = parseInt(prompt("How long do you want your password to be? Password must be a minimum of 8 characters, and no more than 128 characters."));
 
   if (!passwordLength) {
-    alert("You chose an invalid option. Please try again. How long do you want your password to be? Password must be a minimum of 8 characters, and no more than 128 characters.");
-    generatePassword();
+    alert("You chose an invalid option. Please try again.");
+    location.reload();
     return;
   }
 
   if (passwordLength < 8 || passwordLength > 128) {
-    alert("You chose an invalid option. Please try again. How long do you want your password to be? Password must be a minimum of 8 characters, and no more than 128 characters.");
-    generatePassword();
+    alert("You chose an invalid option. Please try again.");
+    location.reload();
+    return;
   }
 
   // Confirm statements to add or exclude different character types to password
@@ -61,14 +62,9 @@ function generatePassword() {
     var passwordString = '';
 
     for (var i = 0; i < passwordLength; i++) {
-
-
       var bankIndex = Math.floor(Math.random() * bank.length);
-
       var charLength = bank[bankIndex].length
-
       var charIndex = Math.floor(Math.random() * charLength)
-
 
       passwordString += bank[bankIndex][charIndex]
     }
@@ -79,7 +75,7 @@ function generatePassword() {
     // If user didn't choose a character type they resart the function with an alert why they are being reset
   } else {
     alert("Please select atleast one character type to create your password.");
-    generatePassword();
+    location.reload();
   }
 
 
